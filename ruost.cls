@@ -59,7 +59,11 @@
 \newcommand{\OSTDocumentClassI}{%
 	\makebox[0.5\linewidth][s]{С\hss Т\hss А\hss Н\hss Д\hss А\hss Р\hss Т}\\
 	\makebox[0.7\linewidth][s]{О\hss Р\hss Г\hss А\hss Н\hss И\hss З\hss А\hss Ц\hss И\hss И}}
-\newcommand{\OSTDocumentClassII}{\makebox[\linewidth][s]{С Т А Н Д А Р Т \  О Р Г А Н И З А Ц И И}}
+\newcommand{\OSTDocumentClassII}{
+	\makebox[\linewidth][s]{%
+		С\hss Т\hss А\hss Н\hss Д\hss А\hss Р\hss Т\hss
+		\ \hss
+		О\hss Р\hss Г\hss А\hss Н\hss И\hss З\hss А\hss Ц\hss И\hss И}}
 
 \newcommand{\OSTOrganisation}{OSTOrganisation}
 
