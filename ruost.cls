@@ -1,7 +1,7 @@
-%%% XeLaTeX's Organisation Standarts class (GOST R 1.4)
+%%% Organisation Standarts class (GOST R 1.4)
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ruost}
+\ProvidesClass{ruost}[2014/10/29 v1.0 Textual Documentation]
 
 %%% Font size options
 \newcommand{\OST@font}{12pt}
