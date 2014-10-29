@@ -283,14 +283,15 @@
 
 \newcommand*\l@appendix[2]{%
 	\ifnum \c@tocdepth >\z@
-	\begingroup
-		\parindent \z@ \rightskip \@pnumwidth
-		\parfillskip -\@pnumwidth
-		\leavevmode
-		\advance\leftskip\OST@appwidth
-		\hskip -\leftskip
-		#1\nobreak\OST@dotfill \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
-	\endgroup
+		\setlength\@tempdima{\OST@appwidth}%
+		\begingroup
+			\parindent \z@ \rightskip \@pnumwidth
+			\parfillskip -\@pnumwidth
+			\leavevmode
+			\advance\leftskip\@tempdima
+			\hskip -\leftskip
+			#1\nobreak\OST@dotfill \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+		\endgroup
 	\fi}
 
 
@@ -439,7 +440,7 @@
 \newcommand{\OSTAppendix}[2]{%
 	\newpage
 	\refstepcounter{ostappendix}
-	\addcontentsline{toc}{appendix}{\parbox{\OST@appwidth}{Приложение \theostappendix}#1\OSTHspace#2}
+	\addcontentsline{toc}{appendix}{\protect\numberline{Приложение \theostappendix}#1\OSTHspace#2}
 	\begin{center}
 		{\OSTFontSection Приложение\OSTHspace\theostappendix}\par
 		#1\bigskip\par
