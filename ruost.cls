@@ -442,7 +442,7 @@
 \fi
 
 \newcommand{\OSTAppendix}[2]{%
-	\newpage
+	\clearpage
 	\refstepcounter{ostappendix}
 	\addcontentsline{toc}{appendix}{\protect\numberline{Приложение \theostappendix}#1\OSTHspace#2}
 	\begin{center}
@@ -457,7 +457,7 @@
 
 \renewcommand{\thebibliography}[1]{%
 	\OSTPresection{\OSTRefname}
-	\addcontentsline{toc}{section}{\OSTRefname}
+	\addcontentsline{toc}{appendix}{\OSTRefname}
 	\list{\@biblabel{\@arabic\c@enumiv}\hfill}{%
 		\setlength{\topsep}{0pt}%
 		\setlength{\itemsep}{0pt}%
