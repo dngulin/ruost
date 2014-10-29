@@ -38,14 +38,17 @@
 \DeclareOption{arabicfootnotes}{\OST@arabicfootnotestrue}
 
 
+%%%
 %%% Processing options
+%%%
 \ProcessOptions\relax
 \LoadClass[a4paper, \OST@font, \OST@sides]{extarticle}
 
 
-%%% ruost variables
+%%%
+%%% Setup RuOST basic values
+%%%
 \newlength{\OSTSep}\setlength{\OSTSep}{1ex}
-
 \newcommand{\OSTHspace}{\hspace{\OSTSep}}
 
 \newcommand{\OSTFontHeader}{\Large\bfseries\MakeUppercase}
@@ -96,7 +99,9 @@
 \fi
 
 
-%%% Change list geometry
+%%%
+%%% Setup list geometry
+%%%
 \RequirePackage{geometry}
 \geometry{
 	includehead,
@@ -108,7 +113,9 @@
 }
 
 
-%%% OST title fields
+%%%
+%%% Title fields
+%%%
 \newcommand{\OSTTitleOrganisation}{\bfseries\MakeUppercase{\OSTOrganisation}}
 \newcommand{\OSTTitleLogo}{OSTTitleLogo}
 \newcommand{\OSTTitleDocumentClass}{\bfseries{\OSTDocumentClassI}}
@@ -125,7 +132,10 @@
 }
 \newcommand{\OSTTitleFooter}{\OSTCity\\\OSTYear}
 
-%%% Titlepage layout
+
+%%%
+%%% Titlepage definition
+%%%
 \renewcommand{\maketitle}{
 	\thispagestyle{empty}
 	\newgeometry{
@@ -174,13 +184,21 @@
 		bottom=10mm
 	}}
 
-%%% Indentation
+
+%%%
+%%% Basic Indentation
+%%% NOTE: \OSTParindent also used in a lot of environments (stdquote, notes)
+%%%
 \RequirePackage{indentfirst}
+
 \newlength{\OSTParindent}
 \setlength{\OSTParindent}{5ex}
 \parindent=\OSTParindent
 
+
+%%%
 %%% Colotitles definition
+%%%
 \newcommand{\OSTHeaderOdd}{\hfill\textbf{\OSTFullNumber}}
 \newcommand{\OSTFooterOdd}{\hfill\upshape\mdseries\thepage}
 \newcommand{\OSTHeaderEven}{\textbf{\OSTFullNumber}\hfill}
@@ -192,7 +210,9 @@
 \renewcommand{\@evenfoot}{\OSTFooterEven}
 
 
-%%% Titles definition
+%%%
+%%% Titles style
+%%%
 \newlength{\OSTBeforeSectionSkip}
 \newlength{\OSTAfterSectionSkip}
 \newlength{\OSTBeforeSubsectionSkip}
@@ -211,14 +231,20 @@
 \titlespacing*{\section}{\parindent}{\OSTBeforeSectionSkip}{\OSTAfterSectionSkip}
 \titlespacing*{\subsection}{\parindent}{\OSTBeforeSubsectionSkip}{\OSTAfterSubsectionSkip}
 
-%%% Captions
+
+%%%
+%%% Captions style
+%%%
 \setlength{\intextsep}{.5\baselineskip}
 \RequirePackage{caption}
 \DeclareCaptionLabelSeparator{dash}{ --- }
 \captionsetup[table]{name=Т\ а\ б\ л\ и\ ц\ а,labelsep=dash,justification=raggedright,singlelinecheck=false, skip=1mm}
 \captionsetup[figure]{name=Рисунок,labelsep=dash,justification=centering,singlelinecheck=false, skip=1mm}
 
-%%% List environments
+
+%%%
+%%% List environments style
+%%%
 \newcommand{\OSTListDash}{\textbf{--}}
 \newcommand{\OSTListLabelWidth}{1.2em}
 \newcommand{\OSTListIndent}{2ex}
@@ -235,14 +261,18 @@
 \setlist[itemize]{label=\OSTListDash, leftmargin=\OSTListIndent+\OSTListLabelWidth, labelindent=\OSTListIndent+\OSTListLabelWidth, itemindent=\OSTListLabelWidth, listparindent=\parindent}
 
 
-%%% Pre-sections
+%%%
+%%% Pre-sections definition
+%%%
 \newcommand{\OSTPresection}[1]{%
 	\vspace{\OSTBeforeSectionSkip}
 	\begin{center}{\OSTFontSection#1}\end{center}
 	\vspace{\OSTAfterSectionSkip}}
 
-%%% TOC definition
-\renewcommand\@dotsep{2}
+
+%%%
+%%% TOC style
+%%%
 \setcounter{tocdepth}{2}
 
 \renewcommand\tableofcontents{%
@@ -299,7 +329,9 @@
 	\fi}
 
 
-%%% OST environment
+%%%
+%%% OST environment definition
+%%%
 \pagenumbering{Roman} % Roman numbering before begining OST environment
 
 \newenvironment{OST}{
@@ -331,8 +363,10 @@
 		\vspace{.5cm}
 	\end{center}}
 
-	
-%%% stdquote environment
+
+%%%
+%%% stdquote environment definition
+%%%
 \newsavebox{\stdquotebox}
 
 \newenvironment{stdquote}{%
@@ -354,7 +388,9 @@
 }
 
 
-%%% Note command
+%%%
+%%% Note command and notes environment definition
+%%%
 \newcommand*{\note}[1]{\par{\small\mbox{П р и м е ч а н и е --- }#1}}
 
 \newcounter{notecouner}
@@ -373,7 +409,9 @@
 	}{\end{list}\medskip}
 
 
-%%% Footnotes 
+%%%
+%%% Footnotes style
+%%%
 \RequirePackage{perpage}
 \MakePerPage{footnote} % Reset footnotes on each page
 
@@ -403,7 +441,9 @@
 	\noindent\hspace{\parindent}\hbox{\hss\@makefnmark}\OSTHspace#1}
 
 
+%%%
 %%% Cyrillic alpha-numeric with GOST limitations
+%%%
 \newcommand{\OSTAsbuk}[1]{\expandafter\OST@Alph\csname c@#1\endcsname}
 \newcommand{\OST@Alph}[1]{\ifcase#1\or
 	А\or Б\or В\or Г\or Д\or
@@ -429,7 +469,9 @@
 \AddEnumerateCounter{\OSTasbuk}{\OST@alph}{м}
 
 
-%%% Appendixes
+%%%
+%%% Appendixes style and command definition
+%%%
 \newcommand{\OSTAppendixNumericPrefix}{П}
 
 \newcounter{ostappendix}
@@ -451,9 +493,11 @@
 		{\OSTFontSubsection#2}\par
 	\end{center}}
 
-	
-%%%	Bibliography
-\newcommand{\OSTRefname}{Библиография}
+
+%%%
+%%%	Bibliography style
+%%%
+\newcommand{\OSTRefname}{Библиография} % Forr remove conflicts with babel or polyglossia
 
 \renewcommand{\thebibliography}[1]{%
 	\OSTPresection{\OSTRefname}
@@ -479,9 +523,10 @@
 \renewcommand{\endthebibliography}{\def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}\endlist}
 
 
+%%%
 %%% Sections marking scheme
-% Sections can be in appendixes
-
+%%% NOTE: sections can be in appendixes
+%%%
 \@addtoreset{section}{ostappendix}
 \@addtoreset{subsection}{ostappendix}
 
@@ -517,7 +562,7 @@
 	\fi
 	\arabic{table}}
 
-%%% Tables marking scheme
+%%% Equation marking scheme
 \@addtoreset{equation}{ostappendix}
 \renewcommand{\theequation}{%
 	\ifnum \c@ostappendix>\z@
