@@ -1,7 +1,7 @@
 %%% Organisation Standarts class (GOST R 1.4)
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ruost}[2014/10/29 v1.1 Textual Documentation]
+\ProvidesClass{ruost}[2014/10/29 v1.2 Textual Documentation]
 
 %%% Font size options
 \newcommand{\OST@font}{12pt}
@@ -43,6 +43,38 @@
 %%%
 \ProcessOptions\relax
 \LoadClass[a4paper, \OST@font, \OST@sides]{extarticle}
+\RequirePackage{calc}
+
+%%%
+%%% Load cyrillic names
+%%%
+\RequirePackage{ifxetex}
+
+\newcommand{\OST@CYR@DocumentClassI}{}
+\newcommand{\OST@CYR@DocumentClassII}{}
+\newcommand{\OST@CYR@ClassPrefix}{}
+\newcommand{\OST@CYR@Approve}{}
+\newcommand{\OST@CYR@DocumentStateI@draft}{}
+\newcommand{\OST@CYR@DocumentStateII@draft}{}
+\newcommand{\OST@CYR@DocumentState@final}{}
+\newcommand{\OST@CYR@TableTitle}{}
+\newcommand{\OST@CYR@FigureTitle}{}
+\newcommand{\OST@CYR@NoteLabel}{}
+\newcommand{\OST@CYR@NotesLabel}{}
+\newcommand{\OST@CYR@ApplyDate}{}
+\newcommand{\OST@CYR@Keywords}{}
+\newcommand{\OST@CYR@AppendixName}{}
+\newcommand{\OST@CYR@AppendixPrefix}{}
+\newcommand{\OST@CYR@BibTitle}{}
+\newcommand{\OST@CYR@M}{}
+\newcommand{\OST@CYR@m}{}
+
+%%% def files also contains cyrillic alpha-numeric commands
+\ifxetex
+	\input{xelatex.def}
+\else
+	\input{latex.def}
+\fi
 
 
 %%%
@@ -59,21 +91,15 @@
 \newcommand{\OSTHeader}{OSTHeader}
 \newcommand{\OSTSubheader}{OSTSubheader}
 
-\newcommand{\OSTDocumentClassI}{%
-	\makebox[0.5\linewidth][s]{С\hss Т\hss А\hss Н\hss Д\hss А\hss Р\hss Т}\\
-	\makebox[0.7\linewidth][s]{О\hss Р\hss Г\hss А\hss Н\hss И\hss З\hss А\hss Ц\hss И\hss И}}
-\newcommand{\OSTDocumentClassII}{
-	\makebox[\linewidth][s]{%
-		С\hss Т\hss А\hss Н\hss Д\hss А\hss Р\hss Т\hss
-		\ \hss
-		О\hss Р\hss Г\hss А\hss Н\hss И\hss З\hss А\hss Ц\hss И\hss И}}
+\newcommand{\OSTDocumentClassI}{\OST@CYR@DocumentClassI}
+\newcommand{\OSTDocumentClassII}{\OST@CYR@DocumentClassII}
 
 \newcommand{\OSTOrganisation}{OSTOrganisation}
 
 \newcommand{\OSTApproverState}{OSTApproverState}
 \newcommand{\OSTApproverName}{OSTApproverName}
 
-\newcommand{\OSTClassPrefix}{СТО}
+\newcommand{\OSTClassPrefix}{\OST@CYR@ClassPrefix}
 \newcommand{\OSTNumber}{OSTNumber}
 \newcommand{\OSTYear}{\the\year}
 \newcommand{\OSTFullNumber}{\OSTClassPrefix\ \OSTNumber---\OSTYear}
@@ -91,11 +117,11 @@
 \newcommand{\OSTApplyDate}{OSTApplyDate}
 
 \ifOST@final
-	\renewcommand{\OSTDocumentStateI}{Издание официальное}
-	\renewcommand{\OSTDocumentStateII}{Издание официальное}
+	\renewcommand{\OSTDocumentStateI}{\OST@CYR@DocumentState@final}
+	\renewcommand{\OSTDocumentStateII}{\OST@CYR@DocumentState@final}
 \else
-	\renewcommand{\OSTDocumentStateI}{Проект стандарта}
-	\renewcommand{\OSTDocumentStateII}{Проект}
+	\renewcommand{\OSTDocumentStateI}{\OST@CYR@DocumentStateI@draft}
+	\renewcommand{\OSTDocumentStateII}{\OST@CYR@DocumentStateII@draft}
 \fi
 
 
@@ -121,7 +147,7 @@
 \newcommand{\OSTTitleDocumentClass}{\bfseries{\OSTDocumentClassI}}
 \newcommand{\OSTTitleDocumentNumber}{\large\bfseries\OSTClassPrefix\\\OSTNumber---\\\OSTYear}
 \newcommand{\OSTTitleAgreement}{%
-	\textbf{УТВЕРЖДАЮ}\\
+	\textbf{\OST@CYR@Approve}\\
 	\OSTApproverState\\
 	\rule{4em}{1pt} \OSTApproverName\\
 	<<\rule{2em}{1pt}>> \rule{5em}{1pt} \rule{4em}{1pt}%
@@ -238,8 +264,8 @@
 \setlength{\intextsep}{.5\baselineskip}
 \RequirePackage{caption}
 \DeclareCaptionLabelSeparator{dash}{ --- }
-\captionsetup[table]{name=Т\ а\ б\ л\ и\ ц\ а,labelsep=dash,justification=raggedright,singlelinecheck=false, skip=1mm}
-\captionsetup[figure]{name=Рисунок,labelsep=dash,justification=centering,singlelinecheck=false, skip=1mm}
+\captionsetup[table]{name=\OST@CYR@TableTitle,labelsep=dash,justification=raggedright,singlelinecheck=false, skip=1mm}
+\captionsetup[figure]{name=\OST@CYR@FigureTitle,labelsep=dash,justification=centering,singlelinecheck=false, skip=1mm}
 
 
 %%%
@@ -249,8 +275,11 @@
 \newcommand{\OSTListLabelWidth}{1.2em}
 \newcommand{\OSTListIndent}{2ex}
 
-\RequirePackage{calc}
 \RequirePackage{enumitem}
+
+\AddEnumerateCounter{\OSTAsbuk}{\OST@Alph}{\OST@CYR@M}
+\AddEnumerateCounter{\OSTasbuk}{\OST@alph}{\OST@CYR@m}
+
 \setlist{topsep=\z@,partopsep=\z@,parsep=\parskip,itemsep=\parskip, align=left, labelindent=\OSTListIndent, listparindent=\parindent, labelsep=*}
 
 \setlist[enumerate,1]{label=\OSTasbuk{enumi}), leftmargin=0pt, labelindent=\parindent, itemindent=\parindent+\OSTListLabelWidth}
@@ -345,7 +374,7 @@
 		\parbox{\linewidth}{\centering\OSTFontHeader{\OSTHeader}\\\OSTFontSubheader\OSTSubheader}\par
 		\vspace{2mm}
 		\parbox{\linewidth}{\rule{\linewidth}{1pt}}\par
-		\hfill\textbf{Дата введения --- \OSTApplyDate}
+		\hfill\textbf{\OST@CYR@ApplyDate\ ---\ \OSTApplyDate}
 	\end{center}
 	\begin{table}[b]
 		\noindent
@@ -358,7 +387,7 @@
 		\parbox{\linewidth}{\rule{\linewidth}{1pt}}\par
 		\parbox{\linewidth}{\OSTLastpageClassLeft\hfill\OSTLastpageClassCenter\hfill\OSTLastpageClassRight}\par
 		\null\par
-		\parbox{\linewidth}{Ключевые слова: \OSTLastpageKeywords}\par
+		\parbox{\linewidth}{\OST@CYR@Keywords\ \OSTLastpageKeywords}\par
 		\parbox{\linewidth}{\rule{\linewidth}{1pt}}\par
 		\vspace{.5cm}
 	\end{center}}
@@ -391,12 +420,12 @@
 %%%
 %%% Note command and notes environment definition
 %%%
-\newcommand*{\note}[1]{\par{\small\mbox{П р и м е ч а н и е --- }#1}}
+\newcommand*{\note}[1]{\par{\small\mbox{\OST@CYR@NoteLabel\ ---\ }#1}}
 
 \newcounter{notecouner}
 \newenvironment{notes}{%
 	\par\small
-	\mbox{П р и м е ч а н и я}
+	\mbox{\OST@CYR@NotesLabel}
 	\begin{list}{\arabic{notecouner}\OSTHspace}{%
 			\usecounter{notecouner}%
 			\setlength{\parsep}{\parskip}%
@@ -440,39 +469,10 @@
 	\parindent=\OSTParindent%
 	\noindent\hspace{\parindent}\hbox{\hss\@makefnmark}\OSTHspace#1}
 
-
-%%%
-%%% Cyrillic alpha-numeric with GOST limitations
-%%%
-\newcommand{\OSTAsbuk}[1]{\expandafter\OST@Alph\csname c@#1\endcsname}
-\newcommand{\OST@Alph}[1]{\ifcase#1\or
-	А\or Б\or В\or Г\or Д\or
-	Е\or Ж\or И\or К\or Л\or
-	М\or Н\or П\or Р\or	С\or
-	Т\or У\or Ф\or Х\or Ц\or
-	Ш\or Щ\or Э\or Ю\or Я\else
-	\ClassError{ruost}{Too many items for Asbuk}%
-	{You can't use Asbuk for more then 25 items.}\fi}
-
-\AddEnumerateCounter{\OSTAsbuk}{\OST@Alph}{М}
-
-\newcommand{\OSTasbuk}[1]{\expandafter\OST@alph\csname c@#1\endcsname}
-\newcommand{\OST@alph}[1]{\ifcase#1\or
-	а\or б\or в\or г\or д\or
-	е\or ж\or и\or к\or л\or
-	м\or н\or п\or р\or	с\or
-	т\or у\or ф\or х\or ц\or
-	ш\or щ\or э\or ю\or я\else
-	\ClassError{ruost}{Too many items for asbuk}%
-	{You can't use asbuk for more then 25 items.}\fi}
-
-\AddEnumerateCounter{\OSTasbuk}{\OST@alph}{м}
-
-
 %%%
 %%% Appendixes style and command definition
 %%%
-\newcommand{\OSTAppendixNumericPrefix}{П}
+\newcommand{\OSTAppendixNumericPrefix}{\OST@CYR@AppendixPrefix}
 
 \newcounter{ostappendix}
 
@@ -486,9 +486,9 @@
 \newcommand{\OSTAppendix}[2]{%
 	\clearpage
 	\refstepcounter{ostappendix}
-	\addcontentsline{toc}{appendix}{\protect\numberline{Приложение \theostappendix}#1\OSTHspace#2}
+	\addcontentsline{toc}{appendix}{\protect\numberline{\OST@CYR@AppendixName\ \theostappendix}#1\OSTHspace#2}
 	\begin{center}
-		{\OSTFontSection Приложение\OSTHspace\theostappendix}\par
+		{\OSTFontSection\OST@CYR@AppendixName\OSTHspace\theostappendix}\par
 		#1\bigskip\par
 		{\OSTFontSubsection#2}\par
 	\end{center}}
@@ -497,7 +497,7 @@
 %%%
 %%%	Bibliography style
 %%%
-\newcommand{\OSTRefname}{Библиография} % Forr remove conflicts with babel or polyglossia
+\newcommand{\OSTRefname}{\OST@CYR@BibTitle} % For remove conflicts with babel or polyglossia
 
 \renewcommand{\thebibliography}[1]{%
 	\OSTPresection{\OSTRefname}

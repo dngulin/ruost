@@ -1,0 +1,56 @@
+\ProvidesFile{xelatex.def}[2014/10/30 v1.2 Language File]
+
+\renewcommand{\OST@CYR@DocumentClassI}{%
+	\makebox[0.5\linewidth][s]{С\hss Т\hss А\hss Н\hss Д\hss А\hss Р\hss Т}\\
+	\makebox[0.7\linewidth][s]{О\hss Р\hss Г\hss А\hss Н\hss И\hss З\hss А\hss Ц\hss И\hss И}}
+
+\renewcommand{\OST@CYR@DocumentClassII}{%
+	\makebox[\linewidth][s]{%
+	С\hss Т\hss А\hss Н\hss Д\hss А\hss Р\hss Т\hss
+	\ \hss
+	О\hss Р\hss Г\hss А\hss Н\hss И\hss З\hss А\hss Ц\hss И\hss И}}
+
+\renewcommand{\OST@CYR@ClassPrefix}{СТО}
+\renewcommand{\OST@CYR@Approve}{УТВЕРЖДАЮ}
+
+\renewcommand{\OST@CYR@DocumentStateI@draft}{Проект\ стандарта}
+\renewcommand{\OST@CYR@DocumentStateII@draft}{Проект}
+\renewcommand{\OST@CYR@DocumentState@final}{Издание\ официальное}
+
+\renewcommand{\OST@CYR@TableTitle}{Т\ а\ б\ л\ и\ ц\ а}
+\renewcommand{\OST@CYR@FigureTitle}{Рисунок}
+
+\renewcommand{\OST@CYR@NoteLabel}{П\ р\ и\ м\ е\ ч\ а\ н\ и\ е}
+\renewcommand{\OST@CYR@NotesLabel}{П\ р\ и\ м\ е\ ч\ а\ н\ и\ я}
+
+\renewcommand{\OST@CYR@ApplyDate}{Дата\ введения}
+\renewcommand{\OST@CYR@Keywords}{Ключевые\ слова:}
+
+\renewcommand{\OST@CYR@AppendixName}{Приложение}
+\renewcommand{\OST@CYR@AppendixPrefix}{П}
+
+\renewcommand{\OST@CYR@BibTitle}{Библиография}
+
+\renewcommand{\OST@CYR@M}{М}
+\renewcommand{\OST@CYR@m}{м}
+
+
+\newcommand{\OSTAsbuk}[1]{\expandafter\OST@Alph\csname c@#1\endcsname}
+\newcommand{\OST@Alph}[1]{\ifcase#1\or
+	А\or Б\or В\or Г\or Д\or
+	Е\or Ж\or И\or К\or Л\or
+	М\or Н\or П\or Р\or	С\or
+	Т\or У\or Ф\or Х\or Ц\or
+	Ш\or Щ\or Э\or Ю\or Я\else
+\ClassError{ruost}{Too many items for Asbuk}%
+{You can't use Asbuk for more then 25 items.}\fi}
+
+\newcommand{\OSTasbuk}[1]{\expandafter\OST@alph\csname c@#1\endcsname}
+\newcommand{\OST@alph}[1]{\ifcase#1\or
+	а\or б\or в\or г\or д\or
+	е\or ж\or и\or к\or л\or
+	м\or н\or п\or р\or	с\or
+	т\or у\or ф\or х\or ц\or
+	ш\or щ\or э\or ю\or я\else
+\ClassError{ruost}{Too many items for asbuk}%
+{You can't use asbuk for more then 25 items.}\fi}

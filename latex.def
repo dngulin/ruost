@@ -1,0 +1,56 @@
+\ProvidesFile{xelatex.def}[2014/10/30 v1.2 Language File]
+
+\renewcommand{\OST@CYR@DocumentClassI}{%
+	\makebox[0.5\linewidth][s]{\cyr\CYRS\hss\CYRT\hss\CYRA\hss\CYRN\hss\CYRD\hss\CYRA\hss\CYRR\hss\CYRT}\\
+	\makebox[0.7\linewidth][s]{\CYRO\hss\CYRR\hss\CYRG\hss\CYRA\hss\CYRN\hss\CYRI\hss\CYRZ\hss\CYRA\hss\CYRC\hss\CYRI\hss\CYRI}}
+
+\renewcommand{\OST@CYR@DocumentClassII}{%
+	\makebox[\linewidth][s]{%
+	\cyr\CYRS\hss\CYRT\hss\CYRA\hss\CYRN\hss\CYRD\hss\CYRA\hss\CYRR\hss\CYRT%
+	\ \hss%
+	\CYRO\hss\CYRR\hss\CYRG\hss\CYRA\hss\CYRN\hss\CYRI\hss\CYRZ\hss\CYRA\hss\CYRC\hss\CYRI\hss\CYRI}}
+
+\renewcommand{\OST@CYR@ClassPrefix}{\CYRS\CYRT\CYRO}
+\renewcommand{\OST@CYR@Approve}{\CYRU\CYRT\CYRV\CYRE\CYRR\CYRZH\CYRD\CYRA\CYRYU}
+
+\renewcommand{\OST@CYR@DocumentStateI@draft}{\CYRP\cyrr\cyro\cyre\cyrk\cyrt\ \cyrs\cyrt\cyra\cyrn\cyrd\cyra\cyrr\cyrt\cyra}
+\renewcommand{\OST@CYR@DocumentStateII@draft}{\CYRP\cyrr\cyro\cyre\cyrk\cyrt}
+\renewcommand{\OST@CYR@DocumentState@final}{\CYRI\cyrz\cyrd\cyra\cyrn\cyri\cyre\ \cyro\cyrf\cyri\cyrc\cyri\cyra\cyrl\cyrsftsn\cyrn\cyro\cyre}
+
+\renewcommand{\OST@CYR@TableTitle}{\CYRT\ \cyra\ \cyrb\ \cyrl\ \cyri\ \cyrc\ \cyra}
+\renewcommand{\OST@CYR@FigureTitle}{\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}
+
+\renewcommand{\OST@CYR@NoteLabel}{\CYRP\ \cyrr\ \cyri\ \cyrm\ \cyre\ \cyrch\ \cyra\ \cyrn\ \cyri\ \cyre}
+\renewcommand{\OST@CYR@NotesLabel}{\CYRP\ \cyrr\ \cyri\ \cyrm\ \cyre\ \cyrch\ \cyra\ \cyrn\ \cyri\ \cyrya}
+
+\renewcommand{\OST@CYR@ApplyDate}{\CYRD\cyra\cyrt\cyra\ \cyrv\cyrv\cyre\cyrd\cyre\cyrn\cyri\cyrya}
+\renewcommand{\OST@CYR@Keywords}{\CYRK\cyrl\cyryu\cyrch\cyre\cyrv\cyrery\cyre\ \cyrs\cyrl\cyro\cyrv\cyra:}
+
+\renewcommand{\OST@CYR@AppendixName}{\CYRP\cyrr\cyri\cyrl\cyro\cyrzh\cyre\cyrn\cyri\cyre}
+\renewcommand{\OST@CYR@AppendixPrefix}{\CYRP}
+
+\renewcommand{\OST@CYR@BibTitle}{\CYRB\cyri\cyrb\cyrl\cyri\cyro\cyrg\cyrr\cyra\cyrf\cyri\cyrya}
+
+\renewcommand{\OST@CYR@M}{\CYRM}
+\renewcommand{\OST@CYR@m}{\cyrm}
+
+
+\newcommand{\OSTAsbuk}[1]{\expandafter\OST@Alph\csname c@#1\endcsname}
+\newcommand{\OST@Alph}[1]{\ifcase#1\or
+	\CYRA\or\CYRB\or\CYRV\or\CYRG\or\CYRD\or
+	\CYRE\or\CYRZH\or\CYRI\or\CYRK\or\CYRL\or
+	\CYRM\or\CYRN\or\CYRP\or\CYRR\or\CYRS\or
+	\CYRT\or\CYRU\or\CYRF\or\CYRH\or\CYRC\or
+	\CYRSH\or\CYRSHCH\or\CYREREV\or\CYRYU\or\CYRYA\else
+\ClassError{ruost}{Too many items for Asbuk}%
+{You can't use Asbuk for more then 25 items.}\fi}
+
+\newcommand{\OSTasbuk}[1]{\expandafter\OST@alph\csname c@#1\endcsname}
+\newcommand{\OST@alph}[1]{\ifcase#1\or
+	\cyra\or\cyrb\or\cyrv\or\cyrg\or\cyrd\or
+	\cyre\or\cyrzh\or\cyri\or\cyrk\or\cyrl\or
+	\cyrm\or\cyrn\or\cyrp\or\cyrr\or\cyrs\or
+	\cyrt\or\cyru\or\cyrf\or\cyrh\or\cyrc\or
+	\cyrsh\or\cyrshch\or\cyrerev\or\cyryu\or\cyrya\else
+\ClassError{ruost}{Too many items for asbuk}%
+{You can't use asbuk for more then 25 items.}\fi}
