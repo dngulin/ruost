@@ -1,33 +1,50 @@
 % xelatex
 \documentclass[12pt, twoside, final]{ruost}
 
-% Словарь
-\usepackage{polyglossia}   %% загружает пакет многоязыковой вёрстки
-\setdefaultlanguage[spelling=modern]{russian}  %% главный язык документа
-\setotherlanguage{english} %% второй язык документа
-
-% Шрифты документа
-\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}
-\setmainfont{Arial}
-
-% Настройка математики
-\usepackage{amsmath}
-\usepackage[math-style=upright]{unicode-math}
-% Загрузка математического шрифта
-\setmathfont{Cambria Math}
-
-% Подмена основных символов (цифры, латиница, греческие буквы)
-\setmathfont[range=\mathup/{num,latin,Latin,greek,Greek}]{Arial}
-\setmathfont[range=\mathit/{num,latin,Latin,greek,Greek}]{Arial Italic}
-
-% Подмена других символов
-% Символы:            ,     .     :     ;
-\setmathfont[range={"002C,"002E,"003A,"003B}]{Arial}
-\setmathfont[range=\sum, Scale=1.5]{Arial}
-
-% Возврат надстрочных и подстрочных индлексов из математического шрифта
-% Иначе возможны проблемы со степенными корнями
-\setmathfont[range={"2070-"208F}]{Cambria Math}
+\ifxetex
+	% Словарь
+	\usepackage{polyglossia}   %% загружает пакет многоязыковой вёрстки
+	\setdefaultlanguage[spelling=modern]{russian}  %% главный язык документа
+	\setotherlanguage{english} %% второй язык документа
+	
+	% Шрифты документа
+	\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}
+	\setmainfont{Arial}
+	
+	% Настройка математики
+	\usepackage{amsmath}
+	% XeTeX не делает коррекцию наклонного шрифта в математике, поэтому лучше использовать "прямой" стиль
+	\usepackage[math-style=upright]{unicode-math}
+	% Загрузка математического шрифта
+	\setmathfont{Cambria Math}
+	
+	% Подмена основных символов (цифры, латиница, греческие буквы)
+	\setmathfont[range=\mathup/{num,latin,Latin,greek,Greek}]{Arial}
+	\setmathfont[range=\mathit/{num,latin,Latin,greek,Greek}]{Arial Italic}
+	
+	% Подмена других символов
+	% Символы:            ,     .     :     ;
+	\setmathfont[range={"002C,"002E,"003A,"003B}]{Arial}
+	\setmathfont[range=\sum, Scale=1.5]{Arial}
+	
+	% Возврат надстрочных и подстрочных индлексов из математического шрифта
+	% Иначе возможны проблемы со степенными корнями
+	\setmathfont[range={"2070-"208F}]{Cambria Math}
+\else
+	% Кодировка ввода и словарь
+	\usepackage[utf8]{inputenc}
+	\usepackage[T2A,T1]{fontenc}
+	\usepackage[english,russian]{babel}
+	
+	% Настройка математики
+	\usepackage{amsmath}
+	
+	% Математический шрифт без засечек
+	\usepackage{cmbright}
+	
+	% Переключение основного шрифта документа
+	\renewcommand*{\familydefault}{\sfdefault}
+\fi
 
 
 % Расстановка отступов и переносов
@@ -55,8 +72,8 @@
 \renewcommand{\OSTApproverName}{Иванов И.И.}
 
 \renewcommand{\OSTHeader}{Класс \LaTeX{} для стандартов организаций}
-\renewcommand{\OSTSubheader}{RuOST 1.0}
-\renewcommand{\OSTNumber}{RuOST 1.0}
+\renewcommand{\OSTSubheader}{RuOST 1.2}
+\renewcommand{\OSTNumber}{RuOST 1.2}
 \renewcommand{\OSTApplyDate}{ГГГГ-ММ-ДД}
 
 \renewcommand{\OSTLastpageClassLeft}{Код УДК}
@@ -64,7 +81,7 @@
 \renewcommand{\OSTLastpageClassRight}{Код ОКП}
 \renewcommand{\OSTLastpageKeywords}{ключевые, слова, стандарта}
 
-\newcommand{\txtcmd}[1]{\textbf{\backslash{}#1}}
+\newcommand{\txtcmd}[1]{\textbf{\textbackslash{}#1}}
 
 \begin{document}
 
@@ -157,13 +174,13 @@
 				\point Стили шрифта заголовков определяются следующими командами.
 				
 					\subpoint \txtcmd{OSTFontHeader} --- стиль шрифта заголовка стандарта, по умолчанию команда определена как
-					\txtcmd{Large\backslash{}bfseries\backslash{}MakeUppercase}.
+					\txtcmd{Large\textbackslash{}bfseries\textbackslash{}MakeUppercase}.
 					
-					\subpoint \txtcmd{OSTFontSubheader} --- стиль шрифта подзаголовка стандарта, по умолчанию команда определена как \txtcmd{Large\backslash{}bfseries}.
+					\subpoint \txtcmd{OSTFontSubheader} --- стиль шрифта подзаголовка стандарта, по умолчанию команда определена как \txtcmd{Large\textbackslash{}bfseries}.
 					
-					\subpoint \txtcmd{OSTFontSection} --- стиль шрифта заголовка раздела стандарта, по умолчанию команда определена как \txtcmd{large\backslash{}bfseries}.
+					\subpoint \txtcmd{OSTFontSection} --- стиль шрифта заголовка раздела стандарта, по умолчанию команда определена как \txtcmd{large\textbackslash{}bfseries}.
 					
-					\subpoint \txtcmd{OSTFontSubsection} --- стиль шрифта заголовка подраздела, по умолчанию стандарта команда определена как \txtcmd{normalsize\backslash{}bfseries}.
+					\subpoint \txtcmd{OSTFontSubsection} --- стиль шрифта заголовка подраздела, по умолчанию стандарта команда определена как \txtcmd{normalsize\textbackslash{}bfseries}.
 					
 				\point Отступы перед и после заголовков определены следующими командами.
 				
@@ -171,9 +188,9 @@
 					
 					\subpoint \txtcmd{OSTAfterSectionSkip} --- пропуск после заголовка раздела, по умолчанию \txtcmd{baselineskip}
 					
-					\subpoint \txtcmd{OSTBeforeSubsectionSkip} --- пропуск перед заголовком подраздела, по умолчанию \textbf{.5\backslash{}baselineskip}
+					\subpoint \txtcmd{OSTBeforeSubsectionSkip} --- пропуск перед заголовком подраздела, по умолчанию \textbf{.5\textbackslash{}baselineskip}
 					
-					\subpoint \txtcmd{OSTAfterSubsectionSkip} --- пропуск после заголовка подраздела, по умолчанию \textbf{.5\backslash{}baselineskip}
+					\subpoint \txtcmd{OSTAfterSubsectionSkip} --- пропуск после заголовка подраздела, по умолчанию \textbf{.5\textbackslash{}baselineskip}
 
 				
 				\point Текстовые константы, определяющие тип стандарта.
@@ -184,7 +201,7 @@
 					
 					\subpoint \txtcmd{OSTClassPrefix} --- префикс перед номером стандарта,  по умолчанию команда определена как \textbf{СТО}.
 					
-				\point  \txtcmd{OSTYear} --- год разработки стандарта, отображается в нижней части титульного листа,  по умолчанию команда определена как \txtcmd{the\backslash{}year}.
+				\point  \txtcmd{OSTYear} --- год разработки стандарта, отображается в нижней части титульного листа,  по умолчанию команда определена как \txtcmd{the\textbackslash{}year}.
 		
 		\section{Оформление стандарта организации}
 		
@@ -644,11 +661,6 @@
 						P(i,j)
 					\end{equation}
 					\begin{equation}
-					( a ), [ b ], \{ c \}, | d |, \| e \|,
-					\langle f \rangle, \lfloor g \rfloor,
-					\lceil h \rceil, \ulcorner i \urcorner
-					\end{equation}
-					\begin{equation}
 					P\left(A=2\middle|\frac{A^2}{B}>4\right)
 					\end{equation}
 					
@@ -720,6 +732,7 @@
 					\item \textbf{calc}
 					\item \textbf{enumitem}
 					\item \textbf{perpage}
+					\item \textbf{ifxetex}
 				\end{enumerate}
 				\subpoint Кроме того, загружаются и зависимые от них пакеты.
 			
