@@ -1,4 +1,28 @@
-% xelatex
+%%%
+%
+% Copyright 2014 Danil Gulin <dngulin@yandex.ru>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+% http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Danil Gulin.
+%
+% This work consists of the files:
+%    ruost.cls
+%    latex.def
+%    xelatex.def
+%    ruost.tex
+%
+%%%
+
+
 \documentclass[12pt, twoside, final]{ruost}
 
 \ifxetex
@@ -66,6 +90,7 @@
 \usepackage{metalogo} % XeLaTeX logo
 \usepackage[unicode, hidelinks, hypertexnames=false]{hyperref}
 
+\newcommand{\RuOSTVersion}{1.3}
 
 \renewcommand{\OSTTitleLogo}{{\Huge\bfseries \fbox{RuOST}}}
 \renewcommand{\OSTOrganisation}{Наименование Организации}
@@ -75,8 +100,8 @@
 \renewcommand{\OSTApproverName}{Иванов И.И.}
 
 \renewcommand{\OSTHeader}{Класс \LaTeX{} для стандартов организаций}
-\renewcommand{\OSTSubheader}{RuOST 1.2}
-\renewcommand{\OSTNumber}{RuOST 1.2}
+\renewcommand{\OSTSubheader}{RuOST \RuOSTVersion}
+\renewcommand{\OSTNumber}{RuOST \RuOSTVersion}
 \renewcommand{\OSTApplyDate}{ГГГГ-ММ-ДД}
 
 \renewcommand{\OSTLastpageClassLeft}{Код УДК}
