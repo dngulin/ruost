@@ -172,8 +172,8 @@
 \newcommand{\OSTTitleAgreement}{%
 	\textbf{\OST@CYR@Approve}\\
 	\OSTApproverState\\
-	\rule{4em}{1pt} \OSTApproverName\\
-	<<\rule{2em}{1pt}>> \rule{5em}{1pt} \rule{4em}{1pt}%
+	\rule{4em}{.5pt} \OSTApproverName\\
+	<<\rule{2em}{.5pt}>> \rule{5em}{.5pt} \rule{4em}{.5pt}%
 }
 \newcommand{\OSTTitleDocumentName}{%
 	{\OSTFontHeader{\OSTHeader}\\[1ex]\OSTFontSubheader{\OSTSubheader}}\\[4ex]
