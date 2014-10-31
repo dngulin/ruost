@@ -317,9 +317,10 @@
 %%% Pre-sections definition
 %%%
 \newcommand{\OSTPresection}[1]{%
-	\vspace{\OSTBeforeSectionSkip}
-	\begin{center}{\OSTFontSection#1}\end{center}
-	\vspace{\OSTAfterSectionSkip}}
+		{\centering
+		\vspace{\OSTBeforeSectionSkip}
+		{\OSTFontSection#1}
+		\vspace{\OSTAfterSectionSkip}\par}}
 
 
 %%%
