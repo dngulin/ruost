@@ -1,6 +1,6 @@
 %%%
 %
-% Copyright 2014 Danil Gulin <dngulin@yandex.ru>
+% Copyright 2014 Danil Gulin
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
