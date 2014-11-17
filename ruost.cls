@@ -357,7 +357,7 @@
 		\setlength\@tempdima{\OST@subsecwidth}%
 		\setlength\@tempdimb{\OST@secwidth}%
 		\begingroup
-			\parindent \@tempdima \rightskip \@pnumwidth
+			\parindent \z@ \rightskip \@pnumwidth
 			\parfillskip -\@pnumwidth
 			\leavevmode
 			\advance\leftskip\@tempdima
