@@ -248,9 +248,9 @@
 %%%
 %%% Colotitles definition
 %%%
-\newcommand{\OSTHeaderOdd}{\hfill\textbf{\OSTFullNumber}}
+\newcommand{\OSTHeaderOdd}{\hfill\textbf{\upshape\OSTFullNumber}}
 \newcommand{\OSTFooterOdd}{\hfill\upshape\mdseries\thepage}
-\newcommand{\OSTHeaderEven}{\textbf{\OSTFullNumber}\hfill}
+\newcommand{\OSTHeaderEven}{\textbf{\upshape\OSTFullNumber}\hfill}
 \newcommand{\OSTFooterEven}{\upshape\mdseries\thepage\hfill}
 
 \renewcommand{\@oddhead}{\OSTHeaderOdd}
